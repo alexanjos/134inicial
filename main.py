@@ -1,32 +1,34 @@
-def print_hi(name):
-    print(f'Hi, {name}')
+import pytest
 
 
-def somar(number_a, number_b):
-    return number_a + number_b
-    # result = number_a + number_b
-    # return result
+def imprimir_oi(nome):
+    print(f'Oi, {nome}')
 
 
-def dividir(number_a, number_b):
+def somar(numero_a, numero_b):
+    return numero_a + numero_b
+
+def dividir(numero_a, numero_b):
     try:
-        return number_a / number_b
+        return numero_a / numero_b
     except ZeroDivisionError:
         return 'Não dividiras por zero'
 
+def subtrair(numero_a, numero_b):
+    return numero_a - numero_b
 
-def subtrair(number_a, number_b):
-    return number_a - number_b
-
-
-def multiplicar(number_a, number_b):
-    return number_a * number_b
+def multiplicar(numero_a, numero_b):
+    return numero_a * numero_b
 
 
 if __name__ == '__main__':
-    print_hi('World')
+    imprimir_oi('Luciana')
 
-    result = somar(5, 7)
-    print(f'O resultado da soma é {result}')
+    # Chamar a definição somar e mostrar o resultado
+    resultado = somar(7, -6)
+    print(f'A soma: {resultado}')
 
-    # Teste Git
+    # Chamar a definição subtrair e mostrar o resultado
+    resultado = subtrair(25, 8)
+    print(f'A subtração: {resultado}')
+
