@@ -1,3 +1,5 @@
+import pytest
+
 from main import somar, subtrair, multiplicar, dividir
 
 
@@ -74,13 +76,34 @@ def teste_dividir_negativo():
     # 3 - Valida
     assert resultado_obtido == resultado_esperado
 
+
+# lista para uso como massa de teste
+lista_de_valores = [
+    (8, 7, 15),
+    (20, 30, 50),
+    (25, 0, 25),
+    (-5, 12, 7),
+    (6, -3, 3)
+]
+
+@pytest.mark.parametrize('numero_a, numero_b, resultado_esperado', lista_de_valores)
+def teste_somar_leitura_de_lista(numero_a, numero_b, resultado_esperado):
+    # 1 - Configura
+    # utilizamos a lista como massa de teste
+
+    # 2 - Executa
+    resultado_obtido = somar(numero_a, numero_b)
+
+    # 3 - Valida
+    assert resultado_obtido == resultado_esperado
+
 # TDD = Test Driven Development
-#       Desenvolvimento Direcionado por Teste
+#        Desenvolvimento Direcionado por Teste
 #
 # - Criar todos os testes de unidade no começo
 # - Executar todos os testes pelo menos 1 vez por dia
 #
-#  Imagine que você no 1º dia (nada pronto)
+# Imagine que você no 1º dia (nada pronto)
 # Você executa todos os testes - o que acontece?
 # Dia 01 - Falhou 100 - Passou 000
 # Dia 02 - Falhou 095 - Passou 005
