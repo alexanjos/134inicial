@@ -31,4 +31,3 @@ if __name__ == '__main__':
     # Chamar a definição subtrair e mostrar o resultado
     resultado = subtrair(25, 8)
     print(f'A subtração: {resultado}')
-

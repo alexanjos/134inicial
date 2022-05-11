@@ -1,8 +1,8 @@
 import csv
-
 import pytest
 
 from main import somar, subtrair, multiplicar, dividir
+
 
 def ler_csv(arquivo_csv):
     dados_csv = []
@@ -46,6 +46,23 @@ def teste_subtrair():
 
     # 3 - Valida / Checa
     assert resultado_obtido == resultado_esperado
+
+
+@pytest.mark.parametrize('numero_a,numero_b,resultado_esperado', ler_csv('C:\\Users\\alexa\PycharmProjects\\134inicial\\vendors\csv\\massa_teste_subtrair_positivo.csv'))
+def teste_subtrair_leitura_de_csv(numero_a, numero_b, resultado_esperado):
+    # 1 - Prepara / Configura
+    # 1.1 - Dados de Entrada / Valores do Teste
+    # numero_a = 15
+    # numero_b = 10
+
+    # 1.2 - Resultados Esperados
+    # resultado_esperado = 5
+
+    # 2 - Executa
+    resultado_obtido = subtrair(int(numero_a), int(numero_b))
+
+    # 3 - Valida / Checa
+    assert resultado_obtido == int(resultado_esperado)
 
 
 def teste_multiplicar():
@@ -102,6 +119,7 @@ lista_de_valores = [
     (6, -3, 3)
 ]
 
+
 @pytest.mark.parametrize('numero_a, numero_b, resultado_esperado', lista_de_valores)
 def teste_somar_leitura_de_lista(numero_a, numero_b, resultado_esperado):
     # 1 - Configura
@@ -113,6 +131,7 @@ def teste_somar_leitura_de_lista(numero_a, numero_b, resultado_esperado):
     # 3 - Valida
     assert resultado_obtido == resultado_esperado
 
+
 @pytest.mark.parametrize('numero_a,numero_b,resultado_esperado', ler_csv('C:\\Users\\alexa\PycharmProjects\\134inicial\\vendors\csv\\massa_teste_somar_positivo.csv'))
 def teste_somar_leitura_de_csv(numero_a, numero_b, resultado_esperado):
     # 1 - Configura
@@ -123,6 +142,7 @@ def teste_somar_leitura_de_csv(numero_a, numero_b, resultado_esperado):
 
     # 3 - Valida
     assert resultado_obtido == int(resultado_esperado)
+
 
 # TDD = Test Driven Development
 #        Desenvolvimento Direcionado por Teste
