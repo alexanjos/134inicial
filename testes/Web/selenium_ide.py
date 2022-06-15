@@ -1,10 +1,13 @@
 from selenium import webdriver
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 
 class TestComprarPassagem:
     def setup_method(self):
-        self.driver = webdriver.Chrome('C:\\Users\\alexa\\PycharmProjects\\134inicial\\vendors\\drivers\\chromedriver.exe')
+        self.driver = webdriver.Chrome(
+          'C:\\Users\\corre\\PycharmProjects\\134inicial\\vendors\\drivers\\chromedriver102.exe'
+        )
         self.vars = {}
 
     def teardown_method(self):
@@ -32,3 +35,19 @@ class TestComprarPassagem:
         self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
         assert self.driver.find_element(By.CSS_SELECTOR, "h1").text == "Thank you for your purchase today!"
         assert self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(2)").text == "555 USD"
+
+
+    def test_login_positivo(self):
+        self.driver.get("https://blazedemo.com/")
+        self.driver.set_window_size(1296, 696)
+        self.driver.find_element(By.LINK_TEXT, "home").click()
+        self.driver.find_element(By.ID, "email").click()
+        self.driver.find_element(By.ID, "email").click()
+        self.driver.find_element(By.ID, "email").click()
+        element = self.driver.find_element(By.ID, "email")
+        actions = ActionChains(self.driver)
+        actions.double_click(element).perform()
+        self.driver.find_element(By.ID, "email").send_keys("ead@iterasys.com.br")
+        self.driver.find_element(By.ID, "password").click()
+        self.driver.find_element(By.ID, "password").send_keys("banana")
+        self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
