@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 class TestComprarPassagem:
     def setup_method(self):
         self.driver = webdriver.Chrome(
-          'C:\\Users\\alexa\\PycharmProjects\\134inicial\\vendors\\drivers\\chromedriver.exe'
+            'C:\\Users\\alexa\\PycharmProjects\\134inicial\\vendors\\drivers\\chromedriver.exe'
         )
         self.vars = {}
 
@@ -35,7 +35,6 @@ class TestComprarPassagem:
         self.driver.find_element(By.CSS_SELECTOR, ".btn-primary").click()
         assert self.driver.find_element(By.CSS_SELECTOR, "h1").text == "Thank you for your purchase today!"
         assert self.driver.find_element(By.CSS_SELECTOR, "tr:nth-child(3) > td:nth-child(2)").text == "555 USD"
-
 
     def test_login_positivo(self):
         self.driver.get("https://blazedemo.com/")
